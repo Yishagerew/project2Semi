@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.1"
+	xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+	<persistence-unit name="healthbook-jpa">
+		<class>eHealth.rest.model.Person</class>
+		<class>eHealth.rest.model.HealthProfile</class>
+		<class>eHealth.rest.model.MeasureDefinition</class>
+		<class>eHealth.rest.model.MeasureHistory</class>
+		<validation-mode>AUTO</validation-mode>
+		<properties>
+		 <!-- the jdbc driver we will use to connect to the database 
+                 change it depending of what database you use -->
+            <property name="javax.persistence.jdbc.driver" value="org.sqlite.JDBC" />
+            <!-- the last part of the url is the path to the sqlite file of the db, in this case it should be
+                 on the root folder of the project -->
+            <property name="javax.persistence.jdbc.url" value="jdbc:sqlite:HealthDb.sqlite" />
+			<!-- Scan for annotated classes and Hibernate mapping XML files -->
+			<property name="hibernate.archive.autodetection" value="class, hbm" />
+			<property name="eclipselink.logging.level" value="ALL" />
+			<property name="eclipselink.ddl-generation" value="none" />
+			<!-- it means that automatic changes will be directly applied to the database 
+				this is not reccommended, but we will use it as example only -->
+			<property name="eclipselink.ddl-generation.output-mode"
+				value="database" />
+			<property name="eclipselink.jpa.uppercase-column-names" value="true"/>
+
+			<!-- <property name="eclipselink.ddl-generation" value="create-tables" 
+				/> -->
+		</properties>
+	</persistence-unit>
+</persistence>
+
